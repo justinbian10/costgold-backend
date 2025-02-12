@@ -32,7 +32,6 @@ func main() {
 
 	flag.Parse()
 	port := os.Getenv("PORT")
-	fmt.Println(port)
 	if port != "" {
 		cfg.port, _ = strconv.Atoi(port)
 	} else {
