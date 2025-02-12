@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -24,13 +25,19 @@ type config struct {
 func main() {
 	var cfg config
 
-	flag.IntVar(&cfg.port, "port", 8080, "API server port")
 	flag.Func("cors-trusted-origins", "Trusted CORS origins (space separated)", func(val string) error {
 		cfg.cors.trustedOrigins = strings.Fields(val)
 		return nil
 	})
 
 	flag.Parse()
+	port := os.Getenv("PORT")
+	fmt.Println(port)
+	if port != "" {
+		cfg.port, _ = strconv.Atoi(port)
+	} else {
+		cfg.port = 8080
+	}
 
 	app := &application{
 		config:  cfg,
