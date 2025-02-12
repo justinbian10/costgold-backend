@@ -1,1 +1,1 @@
-web: bin/costgold -cors-trusted-origins="costgold.vercel.app"
+web: bin/costgold -cors-trusted-origins="https://costgold.vercel.app"
