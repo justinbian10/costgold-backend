@@ -1,1 +1,1 @@
-web: make run/api
+web: go run . -cors-trusted-origins="http://localhost:5173"
