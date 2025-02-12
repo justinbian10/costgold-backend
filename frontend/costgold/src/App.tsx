@@ -4,7 +4,7 @@ import PurchaseValueDisplay from "./components/PurchaseValueDisplay.tsx";
 
 import CostgoldClient from "./helpers/CostgoldClient.tsx";
 
-const BASE_URL = 'https://costgold-backend-b740d2e4daaf.herokuapp.com/';
+const BASE_URL = 'https://costgold-backend-b740d2e4daaf.herokuapp.com';
 
 function App() {
   const [price, setPrice] = useState(0);
