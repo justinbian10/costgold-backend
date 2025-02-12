@@ -30,7 +30,13 @@ type PureScraper struct {
 }
 
 func (p *PureScraper) GetProduct(productName string) (*Product, error) {
-	ctx, cancel := chromedp.NewContext(context.Background())
+	//ctx, cancel := chromedp.NewContext(context.Background())
+	opts := append(chromedp.DefaultExecAllocatorOptions[:],
+		chromedp.Flag("headless", true),
+		chromedp.Flag("disable-gpu", true),
+		chromedp.Flag("no-sandbox", true), // VERY DANGEROUS!
+	)
+	ctx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
 	defer cancel()
 
 	ctx, cancel = context.WithTimeout(ctx, 15*time.Second)
