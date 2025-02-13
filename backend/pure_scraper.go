@@ -39,6 +39,9 @@ func (p *PureScraper) GetProduct(productName string) (*Product, error) {
 	ctx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
 	defer cancel()
 
+	ctx, cancel = chromedp.NewContext(ctx)
+	defer cancel()
+
 	ctx, cancel = context.WithTimeout(ctx, 15*time.Second)
 	defer cancel()
 
