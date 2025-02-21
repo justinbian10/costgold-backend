@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 function PurchaseValueDisplay({price, buyPrice}) {
-	const [pureStatusPercent, setPureStatusPercent] = useState("");
+	const [pureStatusPercent, setPureStatusPercent] = useState(.75);
 
 	const calculateBreakeven = (feePercent) => {
-		const pureFee = 0.01 * parseFloat(pureStatusPercent) ? pureStatusPercent != "" : 0;
+		const pureFee = 0.01 * parseFloat(pureStatusPercent);
 		const priceAfterPure = price - (price * pureFee)
 		console.log(priceAfterPure)
 		const maxBuyPrice = priceAfterPure / (1 + (0.01 * feePercent))
