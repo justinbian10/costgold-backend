@@ -30,9 +30,8 @@ type OfferInfo struct {
 }
 
 func (p *PureClient) GetProduct(productName string) (*Product, error) {
-	err := godotenv.Load(".env")
-	if err != nil {
-		return nil, err
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("No .env file found, skipping...")
 	}
 
 	url := fmt.Sprintf("%s/v1/product/sku/%s", BASE_URL, productMap[productName])
@@ -47,7 +46,7 @@ func (p *PureClient) GetProduct(productName string) (*Product, error) {
 	//res, err := http.Get("http://example.com")
 	//body, _ := ioutil.ReadAll(res.Body)
 	var test ProductVariants
-	err = json.NewDecoder(res.Body).Decode(&test)
+	err := json.NewDecoder(res.Body).Decode(&test)
 	if err != nil {
 		return nil, err
 	}
