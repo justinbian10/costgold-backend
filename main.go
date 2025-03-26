@@ -40,7 +40,7 @@ func main() {
 
 	app := &application{
 		config:  cfg,
-		scraper: new(PureScraper),
+		scraper: new(PureClient),
 	}
 
 	srv := &http.Server{
